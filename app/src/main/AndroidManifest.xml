@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.solusindo.kreativa.companyprofilekreativaadmin">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:largeHeap="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".LoginActivity"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".CompanyProfileActivity" />
+        <activity android:name=".ProfilActivity" />
+        <activity android:name=".VideoActivity" />
+        <activity android:name=".LogoActivity" />
+        <activity android:name=".VisiMisiActivity" />
+        <activity android:name=".OrganisasiActivity" />
+        <activity android:name=".ViewBeritaActivity" />
+        <activity android:name=".EditBeritaActivity" />
+        <activity android:name=".FasilitasActivity" />
+        <activity android:name=".TambahFasillitasActivity" />
+        <activity android:name=".EditFasilitasActivity" />
+        <activity android:name=".GalleryActivity" />
+        <activity android:name=".TambahGalleryActivity" />
+        <activity android:name=".ViewGalleryActivity" />
+        <activity android:name=".ProductActivity" />
+        <activity android:name=".TambahProductActivity" />
+        <activity android:name=".ViewProductActivity" />
+        <activity android:name=".PortofolioActivity" />
+        <activity android:name=".EditProfilActivity" />
+        <activity android:name=".EditVisiActivity" />
+        <activity android:name=".BeritaActivity" />
+        <activity android:name=".TambahBerita" />
+        <activity android:name=".OptionActivity" />
+        <activity android:name=".EditGaleryActivity" />
+        <activity android:name=".EditProductActivity" />
+        <activity android:name=".TambahPortofolioActivity" />
+        <activity android:name=".EditPortofolioActivity"></activity>
+    </application>
+
+</manifest>

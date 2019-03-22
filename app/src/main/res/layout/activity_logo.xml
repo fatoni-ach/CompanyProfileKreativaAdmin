@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".LogoActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bar">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back"
+            android:layout_gravity="center"
+            android:onClick="onBack"
+            android:layout_marginLeft="3dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Logo Perusahaan"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/BT_organisasi_simpan"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:textColor="@color/txt_button"
+            android:elevation="100dp"
+            android:background="@color/button"
+            android:onClick="onUpload"
+            android:text="simpan" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textView5_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="PT KREATIVA TECHNOLOGY SOLUSINDO"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6_organisasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5_logo"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="41dp"
+        android:text="Pilih Gambar Logo : "
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/BT_organisasi_upload"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView6_organisasi"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="-14dp"
+        android:textColor="@color/txt_button"
+        android:background="@color/button"
+        android:elevation="100dp"
+        android:onClick="onPilih"
+        android:layout_toEndOf="@+id/textView6_organisasi"
+        android:text="pilih" />
+
+    <ImageView
+        android:id="@+id/IV_logo"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/BT_organisasi_upload"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+
+</RelativeLayout>
