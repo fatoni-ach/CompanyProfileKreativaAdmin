@@ -89,6 +89,8 @@ public class VideoActivity extends YouTubeBaseActivity {
 //                    str_nama_perusahaan = jsonObject.getString("NAMA_PERUSAHAAN");
                     video_url = jsonObject.getString("URL_VIDEO_PROFIL");
                     VIDEO_ID = video_url;
+                    myouTubePlayer.loadVideo(VIDEO_ID);
+                    myouTubePlayer.cueVideo(VIDEO_ID);
                     progressDialog.dismiss();
 //                    Toast.makeText(getBaseContext(), video_url.toString(), Toast.LENGTH_LONG).show();
                     video.setText(video_url);
@@ -155,8 +157,6 @@ public class VideoActivity extends YouTubeBaseActivity {
 //            youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
 //            youTubePlayer.cuePlaylist(VIDEO_ID);
                     myouTubePlayer = youTubePlayer;
-                    myouTubePlayer.loadVideo(VIDEO_ID);
-                    myouTubePlayer.cueVideo(VIDEO_ID);
 //            player.cueVideo(VIDEO_ID);
 //            youTubePlayer = player;
                 }

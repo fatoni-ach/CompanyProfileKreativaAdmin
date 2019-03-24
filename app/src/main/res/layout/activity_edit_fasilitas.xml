@@ -10,14 +10,13 @@
         android:layout_height="50dp"
         android:background="@color/bar">
 
-        <Button
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:textColor="@color/txt_button"
             android:layout_gravity="center"
-            android:layout_margin="3dp"
-            android:background="@color/button"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/batal"
             android:onClick="onBatal"
             android:text="batal"
             android:visibility="visible" />
@@ -34,14 +33,13 @@
             android:textSize="23sp"
             android:textStyle="bold" />
 
-        <Button
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:textColor="@color/txt_button"
-            android:layout_margin="3dp"
-            android:background="@color/button"
+            android:layout_marginRight="3dp"
+            android:background="@drawable/save"
             android:onClick="onSimpan"
             android:text="Simpan"
             android:visibility="visible" />

@@ -32,17 +32,16 @@
             android:textSize="23sp"
             android:textStyle="bold" />
 
-        <Button
+        <ImageButton
             android:id="@+id/BT_organisasi_simpan"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_margin="3dp"
             android:textColor="@color/txt_button"
             android:elevation="100dp"
-            android:background="@color/button"
-            android:onClick="onUpload"
-            android:text="simpan" />
+            android:background="@drawable/save"
+            android:onClick="onUpload" />
     </LinearLayout>
     <TextView
         android:id="@+id/textView5_logo"

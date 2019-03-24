@@ -12,16 +12,14 @@
         android:background="@color/bar">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:textColor="@color/txt_button"
-            android:layout_margin="3dp"
+            android:layout_marginLeft="5dp"
             android:layout_gravity="center"
-            android:background="@color/button"
+            android:background="@drawable/batal"
             android:onClick="onBack"
-            android:scaleType="fitStart"
-            android:text="batal"
-            tools:srcCompat="?attr/actionModeCloseDrawable" />
+            android:scaleType="fitStart"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,14 +35,13 @@
 
         <Button
             android:id="@+id/BT_fasilitas_tambah"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_margin="3dp"
+            android:layout_marginRight="5dp"
             android:textColor="@color/txt_button"
-            android:background="@color/button"
-            android:onClick="onSimpan"
-            android:text="Upload" />
+            android:background="@drawable/save"
+            android:onClick="onSimpan" />
     </LinearLayout>
 
     <ScrollView

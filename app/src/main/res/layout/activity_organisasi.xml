@@ -15,10 +15,9 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="5dp"
             android:src="@drawable/back"
-            android:onClick="onBack"
-            tools:srcCompat="?attr/actionModeCloseDrawable" />
+            android:onClick="onBack" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,17 +32,16 @@
             android:textColor="@color/white"
             android:textSize="28sp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/BT_organisasi_simpan"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_margin="3dp"
-            android:elevation="100dp"
-            android:background="@color/button"
+            android:layout_marginRight="5dp"
+            android:elevation="20dp"
+            android:background="@drawable/save"
             android:textColor="@color/txt_button"
             android:layout_gravity="center"
-            android:onClick="onSimpan"
-            android:text="Simpan" />
+            android:onClick="onSimpan" />
     </LinearLayout>
 
     <TextView
@@ -80,7 +78,7 @@
         android:textColor="@color/txt_button"
         android:background="@color/button"
         android:elevation="100dp"
-        android:text="choose" />
+        android:text="upload" />
 
     <ImageView
         android:id="@+id/IV_organisasi"

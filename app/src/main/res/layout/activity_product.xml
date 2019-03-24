@@ -20,8 +20,7 @@
             android:scaleType="fitStart"
             android:layout_gravity="center"
             android:layout_marginLeft="3dp"
-            android:onClick="onBack"
-            tools:srcCompat="?attr/actionModeCloseDrawable" />
+            android:onClick="onBack"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -62,6 +61,8 @@
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="28dp"
         android:clickable="true"
+        android:focusable="true"
+        android:backgroundTint="@color/bar"
         android:onClick="onTambah"
         android:src="@drawable/add"/>
 

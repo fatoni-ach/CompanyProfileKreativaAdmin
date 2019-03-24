@@ -97,6 +97,7 @@ public class EditPortofolioActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
             }
         }) {
             @Override

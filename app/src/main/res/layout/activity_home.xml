@@ -16,6 +16,7 @@
         android:layout_marginTop="22dp"
         android:fontFamily="serif"
         android:text="Welcome"
+        android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold" />
 
@@ -56,6 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
                     android:text="Company Profile"
+                    android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>
             <LinearLayout
@@ -81,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Posting"
+                    android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>
             <LinearLayout
@@ -105,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Fasilitas"
+                    android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
@@ -135,6 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Gallery"
+                    android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>
             <LinearLayout
@@ -159,6 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Product"
+                    android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>
             <LinearLayout
@@ -183,6 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Portofolio"
+                    android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>

@@ -16,9 +16,8 @@
             android:layout_height="30dp"
             android:src="@drawable/back"
             android:layout_gravity="center"
-            android:layout_marginLeft="3dp"
-            android:onClick="onBack"
-            tools:srcCompat="?attr/actionModeCloseDrawable" />
+            android:layout_marginLeft="4dp"
+            android:onClick="onBack"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,17 +32,13 @@
             android:textSize="23sp"
             android:textStyle="bold" />
 
-        <Button
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_margin="3dp"
-            android:elevation="100dp"
-            android:textSize="12dp"
-            android:textColor="@color/txt_button"
-            android:background="@color/button"
-            android:onClick="onSimpann"
-            android:text="SImpan" />
+            android:layout_marginRight="4dp"
+            android:background="@drawable/save"
+            android:onClick="onSimpann"/>
     </LinearLayout>
 
     <TextView

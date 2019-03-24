@@ -11,18 +11,17 @@
         android:layout_height="50dp"
         android:background="@color/bar">
 
-        <Button
+        <ImageView
             android:id="@+id/BT_pp_batal"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_margin="3dp"
-            android:background="@color/button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/batal"
             android:onClick="onBatal"
             android:layout_gravity="center"
-            android:text="batal"
             android:textSize="12sp"
-            android:elevation="100dp"
             android:textColor="@color/txt_button"
+            android:backgroundTint="@color/bar"
             android:visibility="visible" />
 
         <TextView
@@ -37,17 +36,15 @@
             android:textSize="23sp"
             android:textStyle="bold" />
 
-        <Button
+        <ImageView
             android:id="@+id/BT_pp_simpan"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="35dp"
-            android:background="@color/button"
-            android:onClick="onEdit"
-            android:layout_margin="3dp"
-            android:text="Simpan"
-            android:elevation="100dp"
             android:layout_gravity="center"
-            android:textColor="@color/txt_button"
+            android:layout_marginRight="5dp"
+            android:backgroundTint="@color/bar"
+            android:onClick="onEdit"
+            android:src="@drawable/save"
             android:visibility="visible" />
     </LinearLayout>
 

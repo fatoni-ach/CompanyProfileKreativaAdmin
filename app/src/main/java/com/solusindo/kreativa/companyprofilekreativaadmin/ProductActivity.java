@@ -101,7 +101,6 @@ public class ProductActivity extends AppCompatActivity {
         myAdapter       =   new AdapterProduct(ProductActivity.this, lstData);
         rv_product.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
-        rv_product.scrollToPosition(lstData.size()-1);
     }
 
     public void reload(){
@@ -124,10 +123,8 @@ public class ProductActivity extends AppCompatActivity {
     public void setRvadapter(List<Product> lst) {
         myAdapter       =   new AdapterProduct(ProductActivity.this, lst);
         layoutManager   =   new GridLayoutManager(this, 2);
-//        ((LinearLayoutManager) layoutManager).setReverseLayout(true);
         rv_product.setLayoutManager(layoutManager);
         rv_product.setAdapter(myAdapter);
-//        rv_fasilitas.scrollToPosition(lst.size()-1);
     }
 
     public void onBack(View view) {finish();
