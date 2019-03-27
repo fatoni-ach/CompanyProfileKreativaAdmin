@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.mvc.imagepicker.ImagePicker;
 import com.solusindo.kreativa.companyprofilekreativaadmin.table.Berita;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -60,6 +61,7 @@ public class TambahBerita extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
         imageView.setVisibility(View.GONE);
+        ImagePicker.setMinQuality(600, 600);
     }
 
     public void onBatal(View view) {finish();
@@ -116,26 +118,27 @@ public class TambahBerita extends AppCompatActivity {
     }
 
     public void onPilih(View view) {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, IMG_REQUEST);
+        com.solusindo.kreativa.companyprofilekreativaadmin.ImagePicker.pickImage(this, "Select Your image : ");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
-            Uri path = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
-                imageView.setVisibility(View.VISIBLE);
-                imageView.setImageBitmap(bitmap);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+//        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
+//            Uri path = data.getData();
+//            try {
+//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
+//                imageView.setVisibility(View.VISIBLE);
+//                imageView.setImageBitmap(bitmap);
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        bitmap = ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
+        imageView.setVisibility(View.VISIBLE);
+        imageView.setImageBitmap(bitmap);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private String ImagetoString(Bitmap bitmap){

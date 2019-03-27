@@ -7,7 +7,7 @@ public class LinkDatabase {
     public LinkDatabase(){
     }
     public String linkurl(){
-        return "http://192.168.137.1/server/";
-//        return "https://kreativa-solusindo.000webhostapp.com/server/";
+//        return "http://192.168.137.1/server/";
+        return "https://kreativa-solusindo.000webhostapp.com/server/";
     }
 }

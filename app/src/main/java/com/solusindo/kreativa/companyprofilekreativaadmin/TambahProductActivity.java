@@ -59,18 +59,22 @@ public class TambahProductActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
+//            Uri path = data.getData();
+//            try {
+//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
+//                imageView.setVisibility(View.VISIBLE);
+//                imageView.setImageBitmap(bitmap);
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        bitmap = com.mvc.imagepicker.ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
+        imageView.setVisibility(View.VISIBLE);
+        imageView.setImageBitmap(bitmap);
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
-            Uri path = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
-                imageView.setVisibility(View.VISIBLE);
-                imageView.setImageBitmap(bitmap);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public void onBack(View view) {finish();
@@ -119,10 +123,11 @@ public class TambahProductActivity extends AppCompatActivity {
     }
 
     public void onUpload(View view) {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, IMG_REQUEST);
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(intent, IMG_REQUEST);
+        com.solusindo.kreativa.companyprofilekreativaadmin.ImagePicker.pickImage(this, "Select Your image : ");
     }
 
     private String ImagetoString(Bitmap bitmap){

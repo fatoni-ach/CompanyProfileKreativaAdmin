@@ -86,7 +86,9 @@ public class BeritaActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("error", error.toString()); progressDialog.dismiss();
+                Log.d("error", error.toString());
+
+                progressDialog.dismiss();
             }
         });
         requestQueue    =   Volley.newRequestQueue(this);

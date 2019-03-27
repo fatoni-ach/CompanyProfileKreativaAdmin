@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.solusindo.kreativa.companyprofilekreativaadmin.table.Berita;
 import com.solusindo.kreativa.companyprofilekreativaadmin.table.Fasilitas;
 import com.squareup.picasso.MemoryPolicy;
@@ -59,14 +60,7 @@ public class AdapterFasilitas extends RecyclerView.Adapter<AdapterFasilitas.View
         final String foto = mData.get(position).getFOTO_FASILITAS();
         final String datetime = mData.get(position).getTANGGAL_FASILITAS();
         holder.tv_ket.setText(desk);
-        Picasso.get().load(linkDatabase.linkurl()+foto).placeholder(R.drawable.thumbnail).into(holder.image);
-//        try {
-//            Picasso.with(context).invalidate(linkDatabase.linkurl()+foto);
-//            Picasso.with(context).load(linkDatabase.linkurl()+foto).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE);
-//            Picasso.with(context).load(linkDatabase.linkurl()+foto).placeholder(R.drawable.thumbnail).into(holder.image);
-//        }catch (Exception e){
-//            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
-//        }
+        Glide.with(context).load(linkDatabase.linkurl()+foto).override(150, 150).placeholder(R.drawable.thumbnail).into(holder.image);
         holder.image.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

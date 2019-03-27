@@ -462,7 +462,7 @@
         android:focusable="true"
         android:onClick="onFAedit"
         android:src="@drawable/sunting"
-        app:backgroundTint="@color/button" />
+        app:backgroundTint="@color/bar" />
 
 
 </RelativeLayout>

@@ -74,7 +74,8 @@
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/button6_ef"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitStart"
                 app:srcCompat="@mipmap/ic_launcher" />
 
             <android.support.design.widget.TextInputLayout

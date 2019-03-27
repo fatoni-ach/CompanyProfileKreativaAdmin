@@ -73,6 +73,7 @@
                 android:layout_below="@+id/button2_ep__"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
+                android:scaleType="fitStart"
                 app:srcCompat="@mipmap/ic_launcher" />
 
             <android.support.design.widget.TextInputLayout

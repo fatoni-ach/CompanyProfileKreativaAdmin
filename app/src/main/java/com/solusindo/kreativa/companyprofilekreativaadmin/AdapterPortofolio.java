@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.solusindo.kreativa.companyprofilekreativaadmin.table.Berita;
 import com.solusindo.kreativa.companyprofilekreativaadmin.table.Portofolio;
 import com.squareup.picasso.MemoryPolicy;
@@ -63,10 +64,8 @@ public class AdapterPortofolio extends RecyclerView.Adapter<AdapterPortofolio.Vi
         holder.tv_judul.setText(judul);
         holder.tv_desk.setText(desk);
         holder.tv_tgl.setText(tanggal);
-        Picasso.get().load(linkDatabase.linkurl()+picture).placeholder(R.drawable.thumbnail).into(holder.imageView);
-//        Picasso.with(context).load(linkDatabase.linkurl()+picture).placeholder(R.drawable.thumbnail).into(holder.imageView);
-//        Picasso.with(context).invalidate(linkDatabase.linkurl()+picture);
-//        Picasso.with(context).load(linkDatabase.linkurl()+picture).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE);
+        Glide.with(context).load(linkDatabase.linkurl()+picture)
+                .override(80, 80).placeholder(R.drawable.thumbnail).into(holder.imageView);
         holder.imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

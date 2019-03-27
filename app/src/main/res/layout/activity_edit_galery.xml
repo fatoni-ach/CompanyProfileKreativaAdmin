@@ -68,12 +68,12 @@
             <ImageView
                 android:id="@+id/IV_eg_gambar"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/BT_eg_upload"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
                 android:visibility="visible"
                 app:srcCompat="@mipmap/ic_launcher" />
 

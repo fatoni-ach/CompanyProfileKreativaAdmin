@@ -23,6 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.module.AppGlideModule;
 import com.solusindo.kreativa.companyprofilekreativaadmin.table.Berita;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -34,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder>{
+public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder> {
 
     RequestQueue requestQueue;
     private Context context;
@@ -72,18 +74,7 @@ public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder
         holder.judul_berita.setText(judul);
         holder.desk_berita.setText(deskripsi);
         holder.tanggal_berita.setText(tanggal);
-//        BitmapFactory.Options options = new BitmapFactory.Options();
-//        options.inSampleSize=8;
-//        Bitmap bitmap = BitmapFactory.decodeFile(linkDatabase.linkurl()+picture, options);
-//        holder.gambar.setImageBitmap(bitmap);
-        Picasso.get().load(linkDatabase.linkurl()+picture).placeholder(R.drawable.thumbnail).into(holder.gambar);
-//        try {
-//            Picasso.with(context).load(linkDatabase.linkurl()+picture).placeholder(R.drawable.thumbnail).into(holder.gambar);
-//            Picasso.with(context).invalidate(linkDatabase.linkurl()+picture);
-//            Picasso.with(context).load(linkDatabase.linkurl()+picture).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE);
-//        }catch (Exception e){
-//            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
-//        }
+        Glide.with(context).load(linkDatabase.linkurl()+picture).override(80, 80).placeholder(R.drawable.thumbnail).into(holder.gambar);
         holder.gambar.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

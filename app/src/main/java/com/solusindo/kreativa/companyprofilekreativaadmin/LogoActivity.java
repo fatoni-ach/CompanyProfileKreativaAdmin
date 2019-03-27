@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.solusindo.kreativa.companyprofilekreativaadmin.background.MySingleton;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -81,10 +82,12 @@ public class LogoActivity extends AppCompatActivity {
     }
 
     public void onPilih(View view) {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, IMG_REQUEST);
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(intent, IMG_REQUEST);
+        com.solusindo.kreativa.companyprofilekreativaadmin.
+                ImagePicker.pickImage(this, "Select Your image : ");
     }
 
     private void geturl() {
@@ -94,12 +97,9 @@ public class LogoActivity extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(0);
-//                    id = String.valueOf(jsonObject.getInt("ID_PROFIL"));
-//                    str_nama_perusahaan = jsonObject.getString("NAMA_PERUSAHAAN");
                     url_img = linkDatabase.linkurl()+jsonObject.getString("URL_LOGO");
-//                    Toast.makeText(getBaseContext(), url_img.toString(), Toast.LENGTH_LONG).show();
-//                    Picasso.with(getBaseContext()).load(url_img).placeholder(R.drawable.thumbnail).into(logo);
-                    Picasso.get().load(url_img).placeholder(R.drawable.thumbnail).into(logo);
+//                    Glide.with(LogoActivity.this).load(linkDatabase.linkurl()+url_img).placeholder(R.drawable.thumbnail).into(logo);
+                    Glide.with(getBaseContext()).load(url_img).placeholder(R.drawable.thumbnail).into(logo);
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -119,17 +119,20 @@ public class LogoActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
+//            Uri path = data.getData();
+//            try {
+//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
+//                logo.setImageBitmap(bitmap);
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        bitmap = com.mvc.imagepicker.ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
+        logo.setImageBitmap(bitmap);
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
-            Uri path = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
-                logo.setImageBitmap(bitmap);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public void onUpload(View view) {

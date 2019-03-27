@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -67,10 +68,7 @@ public class EditPortofolioActivity extends AppCompatActivity {
         et_tgl.setText(str_datetime);
         et_tempat.setText(str_tempat);
         et_desk.setText(str_desk);
-        Picasso.get().load(linkDatabase.linkurl()+str_picture).placeholder(R.drawable.thumbnail).into(gambar);
-//        Picasso.with(this).invalidate(linkDatabase.linkurl()+str_picture);
-//        Picasso.with(this).load(linkDatabase.linkurl()+str_picture).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE);
-//        Picasso.with(this).load(linkDatabase.linkurl()+str_picture).into(gambar);
+        Glide.with(this).load(linkDatabase.linkurl()+str_picture).placeholder(R.drawable.thumbnail).into(gambar);
     }
 
     public void onBatal(View view) {finish();
@@ -126,32 +124,37 @@ public class EditPortofolioActivity extends AppCompatActivity {
     }
 
     public void onPilih(View view) {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, IMG_REQUEST);
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(intent, IMG_REQUEST);
+        com.solusindo.kreativa.companyprofilekreativaadmin
+                .ImagePicker.pickImage(this, "Select Your image : ");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//       // super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
+//            Uri path = data.getData();
+//            try {
+//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
+//                gambar.setImageBitmap(bitmap);
+//                status = true;
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        bitmap = com.mvc.imagepicker.ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
+        gambar.setVisibility(View.VISIBLE);
+        gambar.setImageBitmap(bitmap);
         super.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
-            Uri path = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
-                gambar.setImageBitmap(bitmap);
-                status = true;
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     private String ImagetoString(Bitmap bitmap){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 10,  byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50,  byteArrayOutputStream);
         byte [] imgbytes = byteArrayOutputStream.toByteArray();
 
         return Base64.encodeToString(imgbytes, Base64.DEFAULT);
