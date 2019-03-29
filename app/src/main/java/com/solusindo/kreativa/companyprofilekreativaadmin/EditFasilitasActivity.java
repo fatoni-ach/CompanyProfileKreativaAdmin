@@ -143,6 +143,7 @@ public class EditFasilitasActivity extends AppCompatActivity {
 //                e.printStackTrace();
 //            }
 //        }
+        status =true;
         bitmap = com.mvc.imagepicker.ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
         gambar.setVisibility(View.VISIBLE);
         gambar.setImageBitmap(bitmap);
