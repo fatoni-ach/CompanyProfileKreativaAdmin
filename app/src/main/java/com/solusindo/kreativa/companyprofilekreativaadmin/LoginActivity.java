@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -25,18 +26,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    TextInputEditText et_username, et_password;
+    TextInputEditText et_username, et_password; Button login;
     LinkDatabase linkDatabase;
     ProgressDialog progressDialog;
     ProgressBar progressBar;private RequestQueue requestQueue;
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         et_username = findViewById(R.id.ET_login_username);
         et_password = findViewById(R.id.ET_login_password);
+        login = findViewById(R.id.BT_login_login);
         progressBar = findViewById(R.id.PB_login);
         linkDatabase = new LinkDatabase();
+        sessionManager = new SessionManager(this);
+
+        login.setVisibility(View.VISIBLE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{android.Manifest.permission.INTERNET}, 1);
@@ -58,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 //            progressDialog.setMessage("Loading...");
 //            progressDialog.show();
             progressBar.setVisibility(View.VISIBLE);
+            login.setVisibility(View.GONE);
 
 //        String type = "login";
 //        Bg_login bg = new Bg_login(this);
@@ -70,17 +77,22 @@ public class LoginActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.INVISIBLE);
                 if(response.toLowerCase().toString().equals("login sukses")){
+                    sessionManager.createSession(et_username.getText().toString(), et_password.getText().toString());
                     Intent intent = new Intent(LoginActivity.this ,HomeActivity.class);
                     startActivity(intent);
-                }else Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+                }else {
+                    login.setVisibility(View.VISIBLE);
+                    Toast.makeText(getApplicationContext(), "Username atau Password anda salah !", Toast.LENGTH_LONG).show();}
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Periksa koneksi internet anda", Toast.LENGTH_LONG).show();
+                login.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
             }
         }) {
             @Override

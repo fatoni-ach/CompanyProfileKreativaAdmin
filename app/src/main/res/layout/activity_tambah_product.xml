@@ -15,7 +15,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="13dp"
             android:textColor="@color/txt_button"
             android:background="@drawable/batal"
             android:onClick="onBack"
@@ -37,7 +37,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="13dp"
             android:textColor="@color/txt_button"
             android:background="@drawable/save"
             android:onClick="onSimpan"/>
@@ -51,22 +51,33 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/button2_tp__"
-                android:layout_width="200dp"
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/TIL_tp_desk"
                 android:layout_centerHorizontal="true"
-                android:onClick="onUpload"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                android:text="Unggah foto" />
+
+            <ImageButton
+                android:id="@+id/button2_tp__"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/TIL_tp_desk"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="35dp"
                 android:background="@color/button"
-                android:textColor="@color/txt_button"
-                android:layout_marginTop="10dp"
-                android:text="Choose Image" />
+                android:onClick="onUpload"
+                android:outlineAmbientShadowColor="@color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/unggah" />
 
             <ImageView
                 android:id="@+id/IV_tp_gambar"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/button2_tp__"

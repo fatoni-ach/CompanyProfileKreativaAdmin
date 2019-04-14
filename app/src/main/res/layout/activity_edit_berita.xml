@@ -13,7 +13,7 @@
         <ImageButton
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="13dp"
             android:layout_gravity="center"
             android:textColor="@color/txt_button"
             android:background="@drawable/batal"
@@ -36,7 +36,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="13dp"
             android:elevation="100dp"
             android:background="@drawable/save"
             android:onClick="onSimpan"
@@ -82,17 +82,26 @@
                     android:hint="Ulasan Postingan" />
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/BT_eb_pilih"
-                android:layout_width="200dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/BT_eb_pilih"
+                android:layout_gravity="center"
+                android:layout_marginTop="-21dp"
+                android:layout_centerHorizontal="true"
+                android:text="Ganti foto" />
+
+            <ImageButton
+                android:id="@+id/BT_eb_pilih"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/TIL_eb_desk"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="29dp"
+                android:background="@color/bar"
                 android:onClick="onReplace"
-                android:background="@color/button"
-                android:textColor="@color/txt_button"
-                android:text="Replace Image" />
+                android:scaleType="fitCenter"
+                android:src="@drawable/unggah" />
 
             <ImageView
                 android:id="@+id/IV_eb_gambar"

@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EditProfilActivity extends AppCompatActivity implements AsyncResponse {
-    EditText nama_perusahaan, alamat, no_telp, email,instagram, desk,wa;
+    EditText nama_perusahaan, alamat, no_telp, email,instagram, desk,wa, fb;
     ProgressDialog progressDialog; LinkDatabase linkDatabase;
     private RequestQueue requestQueue;
 
@@ -40,6 +40,7 @@ public class EditProfilActivity extends AppCompatActivity implements AsyncRespon
         instagram = (EditText)findViewById(R.id.ET_pp_instagram);
         desk = (EditText)findViewById(R.id.ET_pp_deskripsi);
         wa = (EditText)findViewById(R.id.ET_pp_wa);
+        fb = (EditText)findViewById(R.id.ET_pp_fb);
         linkDatabase = new LinkDatabase();
 
         String str_nama_p = getIntent().getStringExtra("NAMA_PERUSAHAAN"),
@@ -48,7 +49,8 @@ public class EditProfilActivity extends AppCompatActivity implements AsyncRespon
                 str_telp = getIntent().getStringExtra("TELP"),
                 str_alamat = getIntent().getStringExtra("ALAMAT"),
                 str_instagram = getIntent().getStringExtra("INSTAGRAM"),
-                str_wa = getIntent().getStringExtra("WHATSAPP");
+                str_wa = getIntent().getStringExtra("WHATSAPP"),
+                str_fb = getIntent().getStringExtra("FACEBOOK");
 
         nama_perusahaan.setText(str_nama_p);
         alamat.setText(str_alamat);
@@ -57,6 +59,7 @@ public class EditProfilActivity extends AppCompatActivity implements AsyncRespon
         instagram.setText(str_instagram);
         desk.setText(str_desk);
         wa.setText(str_wa);
+        fb.setText(str_fb);
 
 
     }
@@ -110,8 +113,7 @@ public class EditProfilActivity extends AppCompatActivity implements AsyncRespon
                 params.put("ALAMAT", alamat.getText().toString());
                 params.put("INSTAGRAM", instagram.getText().toString());
                 params.put("WHATSAPP", wa.getText().toString());
-
-
+                params.put("FACEBOOK", fb.getText().toString());
                 return params;
             }
         };

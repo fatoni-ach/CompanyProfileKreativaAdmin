@@ -17,15 +17,16 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back"
-            android:scaleType="fitStart"
             android:layout_gravity="center"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="13dp"
             android:onClick="onBack" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="40sp"
             android:layout_marginLeft="8dp"
             android:layout_weight="1"
             android:fontFamily="sans-serif"

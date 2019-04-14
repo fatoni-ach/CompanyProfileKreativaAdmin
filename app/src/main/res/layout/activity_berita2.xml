@@ -17,9 +17,9 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="13dp"
             android:onClick="onBack"
-            android:scaleType="fitStart"
+            android:backgroundTint="@color/button"
             android:src="@drawable/back" />
 
         <TextView
@@ -29,6 +29,8 @@
             android:layout_marginLeft="8dp"
             android:textColor="@color/white"
             android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginRight="40dp"
             android:text="Posting"
             android:textStyle="bold"
             android:textSize="23dp" />

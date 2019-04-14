@@ -15,7 +15,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="13dp"
             android:src="@drawable/back"
             android:onClick="onBack" />
 
@@ -36,7 +36,7 @@
             android:id="@+id/BT_organisasi_simpan"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="13dp"
             android:elevation="20dp"
             android:background="@drawable/save"
             android:textColor="@color/txt_button"
@@ -53,6 +53,7 @@
         android:layout_marginTop="70dp"
         android:text="Struktur Organisasi"
         android:textSize="25sp"
+        android:textColor="@color/black"
         android:textStyle="bold" />
 
     <TextView
@@ -60,38 +61,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView5_organisasi"
-        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Gambar Struktur Organisasi : "
+        android:layout_marginTop="10dp"
+        android:text="pilih gambar"
         android:textSize="18sp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/BT_organisasi_upload"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView6_organisasi"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="-14dp"
-        android:layout_toEndOf="@+id/textView6_organisasi"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textView6_organisasi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="@color/bar"
+        android:src="@drawable/unggah"
+        android:scaleType="fitCenter"
         android:onClick="onUpload"
-        android:textColor="@color/txt_button"
-        android:background="@color/button"
-        android:elevation="100dp"
-        android:text="upload" />
+        android:text="upload"
+        android:textColor="@color/txt_button" />
 
     <ImageView
         android:id="@+id/IV_organisasi"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/BT_organisasi_upload"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="10dp"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/thumbnail" />
 
 
 

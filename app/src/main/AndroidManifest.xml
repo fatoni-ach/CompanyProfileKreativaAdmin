@@ -11,9 +11,9 @@
 
     <application
         android:allowBackup="true"
-        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -22,12 +22,12 @@
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
-            android:grantUriPermissions="true"
-            >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
+
         <activity
             android:name=".LoginActivity"
             android:noHistory="true">
@@ -64,7 +64,7 @@
         <activity android:name=".EditGaleryActivity" />
         <activity android:name=".EditProductActivity" />
         <activity android:name=".TambahPortofolioActivity" />
-        <activity android:name=".EditPortofolioActivity"></activity>
+        <activity android:name=".EditPortofolioActivity" />
     </application>
 
 </manifest>

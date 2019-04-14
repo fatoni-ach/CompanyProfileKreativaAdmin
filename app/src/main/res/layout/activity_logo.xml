@@ -17,7 +17,7 @@
             android:src="@drawable/back"
             android:layout_gravity="center"
             android:onClick="onBack"
-            android:layout_marginLeft="3dp" />
+            android:layout_marginLeft="13dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_margin="3dp"
+            android:layout_marginRight="13dp"
             android:textColor="@color/txt_button"
             android:elevation="100dp"
             android:background="@drawable/save"
@@ -51,6 +51,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:text="PT KREATIVA TECHNOLOGY SOLUSINDO"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -59,38 +60,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView5_logo"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="41dp"
-        android:text="Pilih Gambar Logo : "
+        android:layout_marginTop="11dp"
+        android:layout_centerHorizontal="true"
+        android:text="pilih logo"
         android:textSize="18sp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/BT_organisasi_upload"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView6_organisasi"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="-14dp"
-        android:textColor="@color/txt_button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textView6_organisasi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:background="@color/button"
-        android:elevation="100dp"
         android:onClick="onPilih"
-        android:layout_toEndOf="@+id/textView6_organisasi"
-        android:text="pilih" />
+        android:text="pilih"
+        android:src="@drawable/unggah"
+        android:scaleType="fitCenter"
+        android:textColor="@color/txt_button" />
 
     <ImageView
         android:id="@+id/IV_logo"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/BT_organisasi_upload"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="20dp"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/thumbnail" />
 
 
 </RelativeLayout>

@@ -17,19 +17,22 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back"
-            android:scaleType="fitStart"
             android:layout_gravity="center"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="13dp"
+            android:backgroundTint="@color/button"
             android:onClick="onBack"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:fontFamily="sans-serif"
-            android:text="Home"
+            android:text="Company Profile"
+            android:gravity="center"
             android:textColor="@color/white"
+            android:layout_marginRight="40dp"
+            android:textStyle="bold"
             android:textSize="25sp" />
     </LinearLayout>
 
@@ -41,7 +44,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="67dp"
         android:fontFamily="serif"
-        android:text="Company Profile"
+        android:text=""
         android:textSize="30sp"
         android:textColor="@color/black"
         android:textStyle="bold" />

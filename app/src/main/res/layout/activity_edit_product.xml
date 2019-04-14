@@ -16,7 +16,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:textColor="@color/txt_button"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="13dp"
             android:layout_gravity="center"
             android:background="@drawable/batal"
             android:onClick="onBack"
@@ -38,7 +38,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="13dp"
             android:textColor="@color/txt_button"
             android:background="@drawable/save"
             android:onClick="onSimpan" />
@@ -52,28 +52,37 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/button2_ep__"
-                android:layout_width="200dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/TIL_eprodut_desk"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:text="Ganti foto" />
+
+            <ImageButton
+                android:id="@+id/button2_ep__"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/TIL_eprodut_desk"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@color/bar"
+                android:scaleType="fitCenter"
                 android:onClick="onUpload"
-                android:background="@color/button"
-                android:textColor="@color/txt_button"
-                android:text="Replace Image" />
+                android:src="@drawable/unggah"
+                android:textColor="@color/txt_button" />
 
             <ImageView
                 android:id="@+id/IV_eprodut_gambar"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/button2_ep__"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:scaleType="fitStart"
                 app:srcCompat="@mipmap/ic_launcher" />
 
             <android.support.design.widget.TextInputLayout

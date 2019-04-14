@@ -29,9 +29,9 @@ public class ProfilActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private List<Profil> lstData;
     public static ProfilActivity PA;
-    TextView nama_perusahaan, alamat, no_telp, email,instagram, desk, wa;
+    TextView nama_perusahaan, alamat, no_telp, email,instagram, desk, wa, fb;
     String str_nama_perusahaan, str_alamat, str_no_telp, str_email,str_instagram,str_wa,
-            str_desk, id;
+            str_desk, id, str_fb;
     ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class ProfilActivity extends AppCompatActivity {
         str_email = new String();
         str_instagram = new String();
         str_desk = new String();
+        str_fb = new String();
         id = new String(); str_wa = new String();
         nama_perusahaan = (TextView)findViewById(R.id.TV_pp_namap);
         alamat = (TextView)findViewById(R.id.TV_pp_alamatp);
@@ -53,6 +54,7 @@ public class ProfilActivity extends AppCompatActivity {
         instagram = (TextView)findViewById(R.id.TV_pp_instagram);
         desk = (TextView)findViewById(R.id.TV_pp_desk);
         wa = (TextView)findViewById(R.id.TV_pp_wa);
+        fb = (TextView)findViewById(R.id.TV_pp_fb);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
@@ -76,6 +78,7 @@ public class ProfilActivity extends AppCompatActivity {
                     str_alamat = jsonObject.getString("ALAMAT");
                     str_instagram = jsonObject.getString("INSTAGRAM");
                     str_wa = jsonObject.getString("WHATSAPP");
+                    str_fb = jsonObject.getString("FACEBOOK");
 
                     nama_perusahaan.setText(str_nama_perusahaan);
                     alamat.setText(str_alamat);
@@ -84,6 +87,7 @@ public class ProfilActivity extends AppCompatActivity {
                     instagram.setText(str_instagram);
                     desk.setText(str_desk);
                     wa.setText(str_wa);
+                    fb.setText(str_fb);
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -101,17 +105,18 @@ public class ProfilActivity extends AppCompatActivity {
         requestQueue.add(arrayRequest);
     }
 
-    public void onEdit(View view) {
-        Intent intent = new Intent(this, EditProfilActivity.class);
-        intent.putExtra("NAMA_PERUSAHAAN", str_nama_perusahaan);
-        intent.putExtra("DESK_PERUSAHAAN", str_desk);
-        intent.putExtra("EMAIL", str_email);
-        intent.putExtra("TELP", str_no_telp);
-        intent.putExtra("ALAMAT", str_alamat);
-        intent.putExtra("INSTAGRAM", str_instagram);
-        intent.putExtra("WHATSAPP", str_wa);
-        startActivity(intent);
-    }
+//    public void onEdit(View view) {
+//        Intent intent = new Intent(this, EditProfilActivity.class);
+//        intent.putExtra("NAMA_PERUSAHAAN", str_nama_perusahaan);
+//        intent.putExtra("DESK_PERUSAHAAN", str_desk);
+//        intent.putExtra("EMAIL", str_email);
+//        intent.putExtra("TELP", str_no_telp);
+//        intent.putExtra("ALAMAT", str_alamat);
+//        intent.putExtra("INSTAGRAM", str_instagram);
+//        intent.putExtra("FACEBOOK", str_fb);
+//        intent.putExtra("WHATSAPP", str_wa);
+//        startActivity(intent);
+//    }
 
     public void refresh(){
         String url      =   linkDatabase.linkurl()+"profil.php?operasi=view";
@@ -129,7 +134,7 @@ public class ProfilActivity extends AppCompatActivity {
                     str_alamat = jsonObject.getString("ALAMAT");
                     str_instagram = jsonObject.getString("INSTAGRAM");
                     str_wa = jsonObject.getString("WHATSAPP");
-
+                    str_fb = jsonObject.getString("FACEBOOK");
 
                     nama_perusahaan.setText(str_nama_perusahaan);
                     alamat.setText(str_alamat);
@@ -138,6 +143,7 @@ public class ProfilActivity extends AppCompatActivity {
                     instagram.setText(str_instagram);
                     desk.setText(str_desk);
                     wa.setText(str_wa);
+                    fb.setText(str_fb);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
@@ -166,6 +172,7 @@ public class ProfilActivity extends AppCompatActivity {
         intent.putExtra("TELP", str_no_telp);
         intent.putExtra("ALAMAT", str_alamat);
         intent.putExtra("INSTAGRAM", str_instagram);
+        intent.putExtra("FACEBOOK", str_fb);
         intent.putExtra("WHATSAPP", str_wa);
         startActivity(intent);
     }

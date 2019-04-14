@@ -124,7 +124,7 @@ public class TambahBerita extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-//        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
+        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
 //            Uri path = data.getData();
 //            try {
 //                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
@@ -134,10 +134,10 @@ public class TambahBerita extends AppCompatActivity {
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
-//        }
-        bitmap = ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
-        imageView.setVisibility(View.VISIBLE);
-        imageView.setImageBitmap(bitmap);
+            bitmap = ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
+            imageView.setVisibility(View.VISIBLE);
+            imageView.setImageBitmap(bitmap);
+        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 

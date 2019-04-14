@@ -13,7 +13,7 @@
         <Button
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="13dp"
             android:layout_gravity="center"
             android:textColor="@color/txt_button"
             android:background="@drawable/batal"
@@ -36,7 +36,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="13dp"
             android:textColor="@color/txt_button"
             android:background="@drawable/save"
             android:onClick="onSimpan"
@@ -100,20 +100,29 @@
                     android:hint="Ulasan Project" />
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:layout_width="200dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Unggah foto" />
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="50dp"
                 android:onClick="onPilih"
                 android:layout_gravity="center"
-                android:background="@color/button"
+                android:background="@color/bar"
                 android:textColor="@color/txt_button"
-                android:elevation="100dp"
+                android:src="@drawable/unggah"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="4dp"
                 android:text="pilih Image" />
 
             <ImageView
                 android:id="@+id/IV_tpor_gambar"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:layout_below="@+id/BT_tpor_pilih"

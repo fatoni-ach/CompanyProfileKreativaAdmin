@@ -67,8 +67,9 @@ public class VideoActivity extends YouTubeBaseActivity {
         video_url = new String();
         linkDatabase = new LinkDatabase();
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.YV_video);
-        geturl();
         youTubePlayersetup();
+        geturl();
+//        geturl();
 //        youTubePlayerView.initialize(API_KEY, this);
 //        youTubePlayerFragment.initialize(API_KEY, this);
 
@@ -83,13 +84,15 @@ public class VideoActivity extends YouTubeBaseActivity {
         arrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                Log.d("json : ", response.toString());
                 try {
                     JSONObject jsonObject = response.getJSONObject(0);
 //                    id = String.valueOf(jsonObject.getInt("ID_PROFIL"));
 //                    str_nama_perusahaan = jsonObject.getString("NAMA_PERUSAHAAN");
                     video_url = jsonObject.getString("URL_VIDEO_PROFIL");
+                    Log.d("video url", video_url);
                     VIDEO_ID = video_url;
-                    myouTubePlayer.loadVideo(VIDEO_ID);
+//                    myouTubePlayer.loadVideo(VIDEO_ID);
                     myouTubePlayer.cueVideo(VIDEO_ID);
                     progressDialog.dismiss();
 //                    Toast.makeText(getBaseContext(), video_url.toString(), Toast.LENGTH_LONG).show();

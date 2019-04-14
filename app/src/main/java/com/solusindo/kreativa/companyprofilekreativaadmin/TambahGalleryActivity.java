@@ -58,7 +58,7 @@ public class TambahGalleryActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
+        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
 //            Uri path = data.getData();
 //            try {
 //                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
@@ -68,10 +68,10 @@ public class TambahGalleryActivity extends AppCompatActivity {
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
-//        }
-        bitmap = com.mvc.imagepicker.ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
-        imageView.setVisibility(View.VISIBLE);
-        imageView.setImageBitmap(bitmap);
+            bitmap = com.mvc.imagepicker.ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
+            imageView.setVisibility(View.VISIBLE);
+            imageView.setImageBitmap(bitmap);
+        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 

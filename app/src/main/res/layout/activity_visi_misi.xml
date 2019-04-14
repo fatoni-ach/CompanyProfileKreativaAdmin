@@ -19,8 +19,7 @@
                 android:layout_gravity="center"
                 android:onClick="onBack"
                 android:src="@drawable/back"
-                android:layout_marginLeft="3dp"
-                tools:srcCompat="?attr/actionModeCloseDrawable" />
+                android:layout_marginLeft="13dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
