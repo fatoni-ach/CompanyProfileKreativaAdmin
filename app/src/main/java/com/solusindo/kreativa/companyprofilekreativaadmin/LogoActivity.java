@@ -120,7 +120,8 @@ public class LogoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
+        bitmap = com.mvc.imagepicker.ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
+        if(bitmap != null){
 //            Uri path = data.getData();
 //            try {
 //                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
@@ -129,7 +130,6 @@ public class LogoActivity extends AppCompatActivity {
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
-            bitmap = com.mvc.imagepicker.ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
             logo.setImageBitmap(bitmap);
             super.onActivityResult(requestCode, resultCode, data);
         }
@@ -142,14 +142,14 @@ public class LogoActivity extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Logo berhasil di ganti", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
                     }
 
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "ada masalah pada koneksi internet", Toast.LENGTH_LONG).show();
                     }
                 }) {
                     @Override

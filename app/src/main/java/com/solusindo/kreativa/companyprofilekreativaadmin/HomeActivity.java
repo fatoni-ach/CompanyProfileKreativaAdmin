@@ -61,4 +61,9 @@ public class HomeActivity extends AppCompatActivity {
 //        startActivity(intent);
         sessionManager.logOut();
     }
+
+    public void onEvent(View view) {
+        Intent intent = new Intent(this, EventActivity.class);
+        startActivity(intent);
+    }
 }

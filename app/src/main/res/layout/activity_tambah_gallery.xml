@@ -68,7 +68,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="32dp"
-                android:background="@color/bar"
+                android:backgroundTint="@color/bar"
                 android:src="@drawable/unggah"
                 android:scaleType="fitCenter"
                 android:onClick="onUpload"

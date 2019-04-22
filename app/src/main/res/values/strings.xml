@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Company Profile Kreativa Admin</string>
+    <string-array name="status">
+        <item>AKTIF</item>
+        <item>TIDAK AKTIF</item>
+    </string-array>
 </resources>

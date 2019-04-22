@@ -72,7 +72,6 @@ public class VideoActivity extends YouTubeBaseActivity {
 //        geturl();
 //        youTubePlayerView.initialize(API_KEY, this);
 //        youTubePlayerFragment.initialize(API_KEY, this);
-
     }
 
     private void geturl() {

@@ -68,7 +68,7 @@
                 android:layout_below="@+id/TIL_eprodut_desk"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
-                android:background="@color/bar"
+                android:backgroundTint="@color/bar"
                 android:scaleType="fitCenter"
                 android:onClick="onUpload"
                 android:src="@drawable/unggah"

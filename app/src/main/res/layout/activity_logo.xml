@@ -72,7 +72,7 @@
         android:layout_below="@+id/textView6_organisasi"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:background="@color/button"
+        android:backgroundTint="@color/button"
         android:onClick="onPilih"
         android:text="pilih"
         android:src="@drawable/unggah"

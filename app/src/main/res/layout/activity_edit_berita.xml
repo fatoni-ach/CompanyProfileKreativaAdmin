@@ -98,7 +98,7 @@
                 android:layout_below="@+id/TIL_eb_desk"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="29dp"
-                android:background="@color/bar"
+                android:backgroundTint="@color/bar"
                 android:onClick="onReplace"
                 android:scaleType="fitCenter"
                 android:src="@drawable/unggah" />

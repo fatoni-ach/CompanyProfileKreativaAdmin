@@ -72,7 +72,7 @@
                 android:layout_below="@+id/TIL_fasilitas_desk"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="31dp"
-                android:background="@color/bar"
+                android:backgroundTint="@color/bar"
                 android:onClick="onUpload"
                 android:text="Choose Image"
                 android:src="@drawable/unggah"

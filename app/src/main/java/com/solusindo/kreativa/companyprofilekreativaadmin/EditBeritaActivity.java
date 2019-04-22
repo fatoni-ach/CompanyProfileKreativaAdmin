@@ -91,13 +91,6 @@ public class EditBeritaActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
                 if(response.toLowerCase().toString().equals("update data berhasil")){
-//                    Berita m = new Berita();
-//                    m.setJUDUL_BERITA(et_judul.getText().toString());
-//                    m.setDESK_BERITA(et_desk.getText().toString());
-//                    m.setPICTURE_BERITA("images/"+time+"_berita.jpg");
-//                    BeritaActivity.ma.tambah(m);
-
-//                    AdapterBerita.ma.tambah(m);
                     BeritaActivity.ma.reload();
                     finish();
                 }
@@ -134,23 +127,15 @@ public class EditBeritaActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
-//            Uri path = data.getData();
-//            try {
-//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
-//                gambar.setImageBitmap(bitmap);
-//                status = true;
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+        super.onActivityResult(requestCode, resultCode, data);
+
+        bitmap = com.mvc.imagepicker.ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
+        if(bitmap !=null){
             status =true;
-            bitmap = com.mvc.imagepicker.ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
             gambar.setVisibility(View.VISIBLE);
             gambar.setImageBitmap(bitmap);
         }
-        super.onActivityResult(requestCode, resultCode, data);
+//        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private String ImagetoString(Bitmap bitmap){

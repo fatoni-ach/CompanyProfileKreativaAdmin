@@ -68,7 +68,7 @@
                 android:layout_below="@+id/TIL_tp_desk"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="35dp"
-                android:background="@color/button"
+                android:backgroundTint="@color/button"
                 android:onClick="onUpload"
                 android:outlineAmbientShadowColor="@color/white"
                 android:scaleType="fitCenter"

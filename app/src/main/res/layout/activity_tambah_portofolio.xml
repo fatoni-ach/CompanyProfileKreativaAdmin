@@ -112,7 +112,7 @@
                 android:layout_height="50dp"
                 android:onClick="onPilih"
                 android:layout_gravity="center"
-                android:background="@color/bar"
+                android:backgroundTint="@color/bar"
                 android:textColor="@color/txt_button"
                 android:src="@drawable/unggah"
                 android:scaleType="fitCenter"
