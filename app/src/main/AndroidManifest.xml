@@ -67,7 +67,14 @@
         <activity android:name=".EditPortofolioActivity" />
         <activity android:name=".EventActivity" />
         <activity android:name=".TambahEventActivity" />
-        <activity android:name=".EditEventActivity"></activity>
+        <activity android:name=".EditEventActivity" />
+        <activity android:name=".LihatPesertaActivity" />
+        <activity android:name=".LihatEventActivity" />
+        <activity android:name=".FullScreenActivity" />
+        <activity android:name=".LupaPasswordActivity" />
+        <activity android:name=".KonfirmasiActivity" />
+        <activity android:name=".GantiPasswordActivity" />
+        <activity android:name=".DetailPesertaActivity"></activity>
     </application>
 
 </manifest>

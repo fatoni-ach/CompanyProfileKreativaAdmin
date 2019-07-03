@@ -1,5 +1,6 @@
 package com.solusindo.kreativa.companyprofilekreativaadmin;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,9 +11,11 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -85,52 +88,76 @@ public class EditEventActivity extends AppCompatActivity {
     }
 
     public void onSimpan(View view) {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
-        String upload_url = linkDatabase.linkurl()+"event.php?operasi=update_event";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
-                if(response.toLowerCase().toString().equals("update data berhasil")){
-                    EventActivity.ma.reload();
-                    finish();
-                }
-            }
+        final Dialog dialogconfirm = new Dialog(this);
+        dialogconfirm.setContentView(R.layout.confirm);
+        dialogconfirm.setTitle("Konfirmasi");
+        dialogconfirm.show();
 
-        }, new Response.ErrorListener() {
+        Button yes = dialogconfirm.findViewById(R.id.BT_confirm_yes);
+        Button no = dialogconfirm.findViewById(R.id.BT_confirm_no);
+        TextView confirm = dialogconfirm.findViewById(R.id.TV_confirm);
+        confirm.setText("Simpan perubahan ?");
+        yes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd_HHmmss");
-                time = sdf.format(new Date());
+            public void onClick(View v) {
+                progressDialog = new ProgressDialog(EditEventActivity.this);
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+                String upload_url = linkDatabase.linkurl()+"event.php?operasi=update_event";
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+                        if(response.toLowerCase().toString().equals("update data berhasil")){
+                            EventActivity.ma.reload();
+                            finish();
+                        }
+                    }
+
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd_HHmmss");
+                        time = sdf.format(new Date());
 //                SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
 //                time2 = sdf2.format(new Date());
 
-                params.put("ID_EVENT", ID_EVENT);
-                params.put("NAMA_EVENT", et_nama.getText().toString());
-                params.put("TGL_EVENT", et_tgl.getText().toString());
-                params.put("TEMPAT", et_tempat.getText().toString());
-                params.put("KAPISITAS", et_kapasitas.getText().toString());
-                params.put("HTM", et_htm.getText().toString());
-                params.put("STATUS", SP_status.getSelectedItem().toString());
-                if (status){
-                    params.put("FOTO_EVENT", ImagetoString(bitmap));
-                    params.put("path", "images/"+time+"_event.jpg");
-                }
-                return params;
+                        params.put("ID_EVENT", ID_EVENT);
+                        params.put("NAMA_EVENT", et_nama.getText().toString());
+                        params.put("TGL_EVENT", et_tgl.getText().toString());
+                        params.put("TEMPAT", et_tempat.getText().toString());
+                        params.put("KAPISITAS", et_kapasitas.getText().toString());
+                        params.put("HTM", et_htm.getText().toString());
+                        params.put("STATUS", SP_status.getSelectedItem().toString());
+                        if (status){
+                            params.put("FOTO_EVENT", ImagetoString(bitmap));
+                            params.put("path", "images/"+time+"_event.jpg");
+                        }
+                        return params;
+                    }
+                };
+                requestQueue    =   Volley.newRequestQueue(EditEventActivity.this);
+                requestQueue.add(stringRequest);
+                dialogconfirm.dismiss();
             }
-        };
-        requestQueue    =   Volley.newRequestQueue(EditEventActivity.this);
-        requestQueue.add(stringRequest);
+        });
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogconfirm.dismiss();
+            }
+        });
+
+
+
     }
 
     public void onPilih(View view) {

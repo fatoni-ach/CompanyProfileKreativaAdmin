@@ -14,4 +14,7 @@
     <color name="black">#000000</color>
     <color name="bg_rv">#cfdbf4</color>
     <color name="txt_button">#d7e8ff</color>
+
+    <color name="lunas">#04ff00</color>
+    <color name="belum_lunas">#ff1014</color>
 </resources>

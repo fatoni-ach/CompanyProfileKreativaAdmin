@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".KonfirmasiActivity">
+
+    <EditText
+        android:id="@+id/confirm_editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="212dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:gravity="center"
+        android:hint="****" />
+
+    <TextView
+        android:id="@+id/confirm_textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="155dp"
+        android:layout_marginLeft="40dp"
+        android:text="kode sudah di kirimkan ke email anda, silahkan cek email anda dan masukkan kode ke dalam kolom" />
+
+    <TextView
+        android:id="@+id/confirm_textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="93dp"
+        android:text="KONFIRMASI"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/confirm_button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirm_editText3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/button"
+        android:text="@android:string/ok"
+        android:onClick="onOk"
+        android:textColor="@color/txt_button" />
+</RelativeLayout>

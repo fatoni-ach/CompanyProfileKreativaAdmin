@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,7 +78,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
         holder.tv_desk.setText(desk);
         Glide.with(context).load(linkDatabase.linkurl()+foto)
                 .override(150, 150).placeholder(R.drawable.thumbnail).into(holder.imageView);
-        holder.imageView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 final Dialog dialog = new Dialog(context);
@@ -108,40 +109,61 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
                 delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final ProgressDialog progressDialog = new ProgressDialog(context);
-                        progressDialog.setCanceledOnTouchOutside(false);
-                        progressDialog.setMessage("Loading...");
-                        progressDialog.show();
-                        String upload_url = linkDatabase.linkurl()+"product.php?operasi=delete_product";
-                        StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                progressDialog.dismiss();
-                                Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
-                                if(response.toString().equals("data berhasil di hapus")){
-                                    delete(position);
-                                }
-//                                dialog.dismiss();
-                            }
-
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
-                            }
-                        }) {
-                            @Override
-                            protected Map<String, String> getParams() throws AuthFailureError {
-                                Map<String, String> params = new HashMap<>();
-                                params.put("path", foto);
-                                params.put("ID_PRODUCT", id);
-                                return params;
-                            }
-                        };
-                        requestQueue    =   Volley.newRequestQueue(context);
-                        requestQueue.add(stringRequest);
-
                         dialog.dismiss();
+                        final Dialog dialogconfirm = new Dialog(context);
+                        dialogconfirm.setContentView(R.layout.confirm);
+                        dialogconfirm.setTitle("Konfirmasi");
+                        dialogconfirm.show();
+
+                        Button yes = dialogconfirm.findViewById(R.id.BT_confirm_yes);
+                        Button no = dialogconfirm.findViewById(R.id.BT_confirm_no);
+                        TextView confirm = dialogconfirm.findViewById(R.id.TV_confirm);
+                        confirm.setText("Apakah anda yakin ingin menghapus produk ?");
+                        yes.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                final ProgressDialog progressDialog = new ProgressDialog(context);
+                                progressDialog.setCanceledOnTouchOutside(false);
+                                progressDialog.setMessage("Loading...");
+                                progressDialog.show();
+                                String upload_url = linkDatabase.linkurl()+"product.php?operasi=delete_product";
+                                StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                                        if(response.toString().equals("data berhasil di hapus")){
+                                            delete(position);
+                                        }
+//                                dialog.dismiss();
+                                    }
+
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
+                                    }
+                                }) {
+                                    @Override
+                                    protected Map<String, String> getParams() throws AuthFailureError {
+                                        Map<String, String> params = new HashMap<>();
+                                        params.put("path", foto);
+                                        params.put("ID_PRODUCT", id);
+                                        return params;
+                                    }
+                                };
+                                requestQueue    =   Volley.newRequestQueue(context);
+                                requestQueue.add(stringRequest);
+
+                                dialogconfirm.dismiss();
+                            }
+                        });
+                        no.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialogconfirm.dismiss();
+                            }
+                        });
                     }
                 });
 
@@ -157,11 +179,13 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView; TextView tv_desk, tv_judul;
+        LinearLayout linearLayout;
         public ViewHolder( View itemView) {
             super(itemView);
             imageView=(ImageView)itemView.findViewById(R.id.IV_product_list);
             tv_judul=(TextView)itemView.findViewById(R.id.TV_lp_judul);
             tv_desk=(TextView)itemView.findViewById(R.id.TV_lp_desk);
+            linearLayout = itemView.findViewById(R.id.LL_product);
         }
     }
 }

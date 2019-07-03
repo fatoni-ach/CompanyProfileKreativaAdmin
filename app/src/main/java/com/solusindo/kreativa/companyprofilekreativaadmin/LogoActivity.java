@@ -3,8 +3,6 @@ package com.solusindo.kreativa.companyprofilekreativaadmin;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +10,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -24,20 +21,13 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
-import com.solusindo.kreativa.companyprofilekreativaadmin.background.MySingleton;
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +36,6 @@ public class LogoActivity extends AppCompatActivity {
     private final int IMG_REQUEST =1;
     public Bitmap bitmap;
     ImageView logo;
-    ImageLoader imageLoader;
     LinkDatabase linkDatabase;
     private RequestQueue requestQueue;
     private JsonArrayRequest arrayRequest;

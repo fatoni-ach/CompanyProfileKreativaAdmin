@@ -4,4 +4,9 @@
         <item>AKTIF</item>
         <item>TIDAK AKTIF</item>
     </string-array>
+
+    <string-array name="status_join">
+        <item>BELUM LUNAS</item>
+        <item>LUNAS</item>
+    </string-array>
 </resources>

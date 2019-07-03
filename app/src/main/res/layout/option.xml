@@ -30,6 +30,19 @@
                 android:layout_height="0.5dp"
                 android:background="@color/line"></View>
             <Button
+                android:id="@+id/BT_view_peserta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Lihat peserta"
+                android:visibility="gone"
+                android:background="@color/white"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/line"></View>
+            <Button
                 android:id="@+id/BT_berita_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

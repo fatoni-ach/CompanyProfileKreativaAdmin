@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -19,14 +20,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.solusindo.kreativa.companyprofilekreativaadmin.background.Bg_login;
-import com.solusindo.kreativa.companyprofilekreativaadmin.interfaces.AsyncResponse;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     TextInputEditText et_username, et_password; Button login;
+    TextView tv_lp;
     LinkDatabase linkDatabase;
     ProgressDialog progressDialog;
     ProgressBar progressBar;private RequestQueue requestQueue;
@@ -108,6 +108,11 @@ public class LoginActivity extends AppCompatActivity {
         requestQueue    =   Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
         }
+    }
+
+    public void onLupa(View view) {
+        Intent intent = new Intent(LoginActivity.this, LupaPasswordActivity.class);
+        startActivity(intent);
     }
 
 //    @Override

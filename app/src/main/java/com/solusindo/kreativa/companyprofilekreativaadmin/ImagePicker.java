@@ -168,7 +168,7 @@ public final class ImagePicker {
     }
 
     private static void startChooser(Fragment fragmentContext) {
-        Intent chooseImageIntent = getPickImageIntent(fragmentContext.getContext(), mChooserTitle);
+        Intent chooseImageIntent = getPickImageIntent(fragmentContext.getContext(), mChooserTitle);/////////////////
         fragmentContext.startActivityForResult(chooseImageIntent, mPickImageRequestCode);
     }
 

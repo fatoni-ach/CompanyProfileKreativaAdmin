@@ -8,7 +8,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:elevation="10dp"
         android:background="@color/bar">
 
         <ImageButton
@@ -18,7 +17,6 @@
             android:onClick="onBatal"
             android:layout_gravity="center"
             android:layout_marginLeft="13dp"
-            android:elevation="10dp"
             android:textColor="@color/txt_button"
             android:visibility="visible" />
 
@@ -42,7 +40,6 @@
             android:background="@drawable/save"
             android:onClick="onSimpan"
             android:text="Upload"
-            android:elevation="100dp"
             android:textColor="@color/txt_button"
             android:visibility="visible" />
     </LinearLayout>

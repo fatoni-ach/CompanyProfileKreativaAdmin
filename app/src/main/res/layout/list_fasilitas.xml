@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="7dp"
+    android:id="@+id/LL_fasilitas"
     android:orientation="vertical"
-    android:elevation="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <android.support.v7.widget.CardView
         android:id="@+id/CV_fasilitas"

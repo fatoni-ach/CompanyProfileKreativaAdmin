@@ -33,7 +33,6 @@ public class GalleryActivity extends AppCompatActivity {
     private AdapterGalery myAdapter;
     private RecyclerView.LayoutManager layoutManager;
     ProgressDialog progressDialog;
-
     LinkDatabase linkDatabase;
 
     public static GalleryActivity ma;
@@ -131,6 +130,7 @@ public class GalleryActivity extends AppCompatActivity {
 
     public void onBack(View view) {finish();
     }
+
 
     public void onTambah(View view) {
         Intent intent = new Intent(getApplicationContext(), TambahGalleryActivity.class);

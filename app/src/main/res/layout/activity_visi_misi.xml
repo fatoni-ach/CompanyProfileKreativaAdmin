@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2"
     tools:context=".VisiMisiActivity">
     <!--///TEXTVIEW//////////////////////////////////////////////////-->
 
@@ -95,7 +94,6 @@
                         android:layout_height="wrap_content"
                         android:background="@color/trans2"
                         android:textSize="14dp"
-                        android:elevation="100dp"
                         android:text="- isi Visi " />
 
                 </android.support.v7.widget.CardView>
@@ -128,7 +126,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/trans2"
-                        android:elevation="100dp"
                         android:text="- isi misi" />
                 </android.support.v7.widget.CardView>
 

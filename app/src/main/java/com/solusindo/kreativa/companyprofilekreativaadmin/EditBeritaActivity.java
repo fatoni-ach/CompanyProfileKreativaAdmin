@@ -1,5 +1,6 @@
 package com.solusindo.kreativa.companyprofilekreativaadmin;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,7 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -80,49 +83,72 @@ public class EditBeritaActivity extends AppCompatActivity {
     }
 
     public void onSimpan(View view) {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
-        String upload_url = linkDatabase.linkurl()+"berita.php?operasi=update_berita";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
-                if(response.toLowerCase().toString().equals("update data berhasil")){
-                    BeritaActivity.ma.reload();
-                    finish();
-                }
-            }
+        final Dialog dialogconfirm = new Dialog(this);
+        dialogconfirm.setContentView(R.layout.confirm);
+        dialogconfirm.setTitle("Konfirmasi");
+        dialogconfirm.show();
 
-        }, new Response.ErrorListener() {
+        Button yes = dialogconfirm.findViewById(R.id.BT_confirm_yes);
+        Button no = dialogconfirm.findViewById(R.id.BT_confirm_no);
+        TextView confirm = dialogconfirm.findViewById(R.id.TV_confirm);
+        confirm.setText("Simpan perubahan ?");
+        yes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+            public void onClick(View v) {
+                progressDialog = new ProgressDialog(EditBeritaActivity.this);
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+                String upload_url = linkDatabase.linkurl()+"berita.php?operasi=update_berita";
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+                        if(response.toLowerCase().toString().equals("update data berhasil")){
+                            BeritaActivity.ma.reload();
+                            finish();
+                        }
+                    }
+
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd_HHmmss");
+                        time = sdf.format(new Date());
+                        SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
+                        time2 = sdf2.format(new Date());
+
+                        params.put("ID_BERITA", str_id);
+                        params.put("JUDUL_BERITA", et_judul.getText().toString());
+                        params.put("DESK_BERITA", et_desk.getText().toString());
+                        if (status){
+                            params.put("PICTURE_BERITA", ImagetoString(bitmap));
+                            params.put("path", "images/"+time+"_berita.jpg");
+                        }
+
+                        return params;
+                    }
+                };
+                requestQueue    =   Volley.newRequestQueue(EditBeritaActivity.this);
+                requestQueue.add(stringRequest);
+                dialogconfirm.dismiss();
             }
-        }) {
+        });
+        no.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd_HHmmss");
-                time = sdf.format(new Date());
-                SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
-                time2 = sdf2.format(new Date());
-
-                params.put("ID_BERITA", str_id);
-                params.put("JUDUL_BERITA", et_judul.getText().toString());
-                params.put("DESK_BERITA", et_desk.getText().toString());
-                if (status){
-                    params.put("PICTURE_BERITA", ImagetoString(bitmap));
-                    params.put("path", "images/"+time+"_berita.jpg");
-                }
-
-                return params;
+            public void onClick(View v) {
+                dialogconfirm.dismiss();
             }
-        };
-        requestQueue    =   Volley.newRequestQueue(EditBeritaActivity.this);
-        requestQueue.add(stringRequest);
+        });
+
+
     }
 
     @Override

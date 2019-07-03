@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailPesertaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/bar">
+
+        <ImageView
+            android:id="@+id/BT_berita_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="13dp"
+            android:onClick="onBack"
+            android:backgroundTint="@color/button"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginRight="40dp"
+            android:text="Detail Peserta"
+            android:textStyle="bold"
+            android:textSize="23dp" />
+
+        <!--<Button-->
+        <!--android:id="@+id/BT_berita_tambah"-->
+        <!--style="@style/Widget.AppCompat.Button.Small"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="3dp"-->
+        <!--android:background="@color/button"-->
+        <!--android:onClick="onTambah"-->
+        <!--android:text="+"-->
+        <!--android:textSize="23sp"-->
+        <!--android:textStyle="bold" />-->
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="55dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/TV_pp_123"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Nama Peserta"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/TV_dp_namap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Nama Peserta"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="4dp"
+                android:background="@color/line"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/TV_pp_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Alamat"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/TV_dp_alamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Alamat"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="4dp"
+                android:background="@color/line"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/TV_pp_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="No Telp"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/TV_dp_nohp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="No Telp"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="4dp"
+                android:background="@color/line"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/TV_pp_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Jenis Kelamin"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/TV_dp_jenisKelamin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Jenis Kelamin"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="4dp"
+                android:background="@color/line"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/TV_pp_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Pendidikan Terakhir"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/TV_dp_pendidikanTerakhir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Pendidikan Terakhir"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="4dp"
+                android:background="@color/line"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/TV_pp_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Status Join"
+                    android:textSize="14sp" />
+                <Spinner
+                    android:id="@+id/SP_dp_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:entries="@array/status_join">
+
+                </Spinner>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="4dp"
+                android:background="@color/line"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/IV_dp_BuktiP"
+                android:onClick="onBuktip"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="4dp"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/button"
+                android:textColor="@color/txt_button"
+                android:layout_margin="6dp"
+                android:onClick="onConfirm"
+                android:text="Confirm"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

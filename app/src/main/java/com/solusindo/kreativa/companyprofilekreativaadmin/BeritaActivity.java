@@ -92,7 +92,6 @@ public class BeritaActivity extends AppCompatActivity {
             }
         });
         requestQueue    =   Volley.newRequestQueue(this);
-//        ArrayRequest.setShouldCache(false);
         requestQueue.add(ArrayRequest);
     }
 

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,7 +76,7 @@ public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder
         holder.desk_berita.setText(deskripsi);
         holder.tanggal_berita.setText(tanggal);
         Glide.with(context).load(linkDatabase.linkurl()+picture).override(80, 80).placeholder(R.drawable.thumbnail).into(holder.gambar);
-        holder.gambar.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 final Dialog dialog = new Dialog(context);
@@ -107,40 +108,66 @@ public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder
                 delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final ProgressDialog progressDialog = new ProgressDialog(context);
-                        progressDialog.setMessage("Loading...");
-                        progressDialog.setCanceledOnTouchOutside(false);
-                        progressDialog.show();
-                        String upload_url = linkDatabase.linkurl()+"berita.php?operasi=delete_berita";
-                        StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                progressDialog.dismiss();
-                                Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
-                                if(response.toString().equals("data berhasil di hapus")){
-                                    delete(position);
-                                }
-//                                dialog.dismiss();
-                            }
-
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
-                            }
-                        }) {
-                            @Override
-                            protected Map<String, String> getParams() throws AuthFailureError {
-                                Map<String, String> params = new HashMap<>();
-                                params.put("path", picture);
-                                params.put("DATETIME_TGL", datetime);
-                                return params;
-                            }
-                        };
-                        requestQueue    =   Volley.newRequestQueue(context);
-                        requestQueue.add(stringRequest);
-
                         dialog.dismiss();
+                        final Dialog dialogconfirm = new Dialog(context);
+                        dialogconfirm.setContentView(R.layout.confirm);
+                        dialogconfirm.setTitle("Konfirmasi");
+                        dialogconfirm.show();
+
+                        Button yes = dialogconfirm.findViewById(R.id.BT_confirm_yes);
+                        Button no = dialogconfirm.findViewById(R.id.BT_confirm_no);
+                        TextView confirm = dialogconfirm.findViewById(R.id.TV_confirm);
+                        confirm.setText("Apakah anda yakin ingin menghapus berita ?");
+
+                        yes.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                final ProgressDialog progressDialog = new ProgressDialog(context);
+                                progressDialog.setMessage("Loading...");
+                                progressDialog.setCanceledOnTouchOutside(false);
+                                progressDialog.show();
+                                String upload_url = linkDatabase.linkurl()+"berita.php?operasi=delete_berita";
+                                StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                                        if(response.toString().equals("data berhasil di hapus")){
+                                            delete(position);
+                                        }
+//                                dialog.dismiss();
+                                    }
+
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
+                                    }
+                                }) {
+                                    @Override
+                                    protected Map<String, String> getParams() throws AuthFailureError {
+                                        Map<String, String> params = new HashMap<>();
+                                        params.put("path", picture);
+                                        params.put("DATETIME_TGL", datetime);
+                                        return params;
+                                    }
+                                };
+                                requestQueue    =   Volley.newRequestQueue(context);
+                                requestQueue.add(stringRequest);
+                                dialogconfirm.dismiss();
+                            }
+                        });
+                        no.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialogconfirm.dismiss();
+                            }
+                        });
+
+
+
+
+
                     }
                 });
 
@@ -170,12 +197,14 @@ public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView gambar;
         public TextView judul_berita, desk_berita, tanggal_berita;
+        LinearLayout linearLayout;
         public ViewHolder( View v) {
             super(v);
             gambar = v.findViewById(R.id.IV_berita_list);
             judul_berita = v.findViewById(R.id.TV_berita_judul);
             desk_berita = v.findViewById(R.id.TV_berita_desk);
             tanggal_berita = v.findViewById(R.id.TV_berita_tgl);
+            linearLayout = v.findViewById(R.id.LL_berita);
         }
     }
 }

@@ -25,10 +25,10 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
 import com.google.android.youtube.player.YouTubePlayerView;
-import com.solusindo.kreativa.companyprofilekreativaadmin.background.Bg_profil;
-import com.solusindo.kreativa.companyprofilekreativaadmin.background.Bg_url;
-import com.solusindo.kreativa.companyprofilekreativaadmin.interfaces.AsyncResponse;
-import com.solusindo.kreativa.companyprofilekreativaadmin.table.Profil;
+//import com.solusindo.kreativa.companyprofilekreativaadmin.background.Bg_profil;
+//import com.solusindo.kreativa.companyprofilekreativaadmin.background.Bg_url;
+//import com.solusindo.kreativa.companyprofilekreativaadmin.interfaces.AsyncResponse;
+//import com.solusindo.kreativa.companyprofilekreativaadmin.table.Profil;
 
 import org.json.JSONArray;
 import org.json.JSONException;

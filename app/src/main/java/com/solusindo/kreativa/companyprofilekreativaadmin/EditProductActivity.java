@@ -1,5 +1,6 @@
 package com.solusindo.kreativa.companyprofilekreativaadmin;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,7 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -72,17 +75,29 @@ public class EditProductActivity extends AppCompatActivity {
     }
 
     public void onSimpan(View view) {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
-        String upload_url = linkDatabase.linkurl()+"product.php?operasi=update_product";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
+        final Dialog dialogconfirm = new Dialog(this);
+        dialogconfirm.setContentView(R.layout.confirm);
+        dialogconfirm.setTitle("Konfirmasi");
+        dialogconfirm.show();
+
+        Button yes = dialogconfirm.findViewById(R.id.BT_confirm_yes);
+        Button no = dialogconfirm.findViewById(R.id.BT_confirm_no);
+        TextView confirm = dialogconfirm.findViewById(R.id.TV_confirm);
+        confirm.setText("Simpan perubahan ?");
+        yes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(String response) {
-                progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
-                if(response.toLowerCase().toString().equals("update data berhasil")){
+            public void onClick(View v) {
+                progressDialog = new ProgressDialog(EditProductActivity.this);
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+                String upload_url = linkDatabase.linkurl()+"product.php?operasi=update_product";
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+                        if(response.toLowerCase().toString().equals("update data berhasil")){
 //                    Berita m = new Berita();
 //                    m.setJUDUL_BERITA(et_judul.getText().toString());
 //                    m.setDESK_BERITA(et_desk.getText().toString());
@@ -90,38 +105,50 @@ public class EditProductActivity extends AppCompatActivity {
 //                    BeritaActivity.ma.tambah(m);
 
 //                    AdapterBerita.ma.tambah(m);
-                    ProductActivity.ma.reload();
-                    finish();
-                }
-            }
+                            ProductActivity.ma.reload();
+                            finish();
+                        }
+                    }
 
-        }, new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd_HHmmss");
+                        time = sdf.format(new Date());
+                        SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
+                        time2 = sdf2.format(new Date());
+
+                        params.put("ID_PRODUCT", str_id);
+                        params.put("JUDUL_PRODUCT", et_judul.getText().toString());
+                        params.put("DESK_PRODUCT", et_desk.getText().toString());
+                        if (status){
+                            params.put("FOTO_PRODUCT", ImagetoString(bitmap));
+                            params.put("path", "images/"+time+"_product.jpg");
+                        }
+
+                        return params;
+                    }
+                };
+                requestQueue    =   Volley.newRequestQueue(EditProductActivity.this);
+                requestQueue.add(stringRequest);
+                dialogconfirm.dismiss();
+            }
+        });
+        no.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+            public void onClick(View v) {
+                dialogconfirm.dismiss();
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd_HHmmss");
-                time = sdf.format(new Date());
-                SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
-                time2 = sdf2.format(new Date());
+        });
 
-                params.put("ID_PRODUCT", str_id);
-                params.put("JUDUL_PRODUCT", et_judul.getText().toString());
-                params.put("DESK_PRODUCT", et_desk.getText().toString());
-                if (status){
-                    params.put("FOTO_PRODUCT", ImagetoString(bitmap));
-                    params.put("path", "images/"+time+"_product.jpg");
-                }
 
-                return params;
-            }
-        };
-        requestQueue    =   Volley.newRequestQueue(EditProductActivity.this);
-        requestQueue.add(stringRequest);
+
     }
 
     public void onUpload(View view) {

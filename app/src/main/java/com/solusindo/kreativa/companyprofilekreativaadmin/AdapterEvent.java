@@ -61,6 +61,22 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.ViewHolder> 
         final String STATUS = mData.get(position).getSTATUS();
         holder.judul.setText(NAMA_EVENT);
         Glide.with(context).load(linkDatabase.linkurl()+FOTO_EVENT).override(350, 200).placeholder(R.drawable.thumbnail).into(holder.gambar);
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, LihatEventActivity.class);
+                intent.putExtra("ID_EVENT", ID_EVENT);
+                intent.putExtra("NAMA_EVENT", NAMA_EVENT);
+                intent.putExtra("TGL_EVENT", TGL_EVENT);
+                intent.putExtra("TEMPAT", TEMPAT);
+                intent.putExtra("KAPISITAS", KAPISITAS);
+                intent.putExtra("HTM", HTM);
+                intent.putExtra("FOTO_EVENT", FOTO_EVENT);
+                intent.putExtra("STATUS", STATUS);
+
+                context.startActivity(intent);
+            }
+        });
         holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -71,6 +87,17 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.ViewHolder> 
 
                 Button edit = dialog.findViewById(R.id.BT_berita_edit);
                 final Button delete = dialog.findViewById(R.id.BT_berita_delete);
+                Button lihat = dialog.findViewById(R.id.BT_view_peserta);
+                lihat.setVisibility(View.VISIBLE);
+
+                lihat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        Intent intent = new Intent(context, LihatPesertaActivity.class);
+                        context.startActivity(intent);
+                    }
+                });
 
                 //apabila tombol edit diklik
                 edit.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +162,14 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.ViewHolder> 
                 return true;
             }
         });
+//        holder.gambar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(context, FullScreenActivity.class);
+//                intent.putExtra("link", FOTO_EVENT);
+//                context.startActivity(intent);
+//            }
+//        });
     }
 
     @Override
