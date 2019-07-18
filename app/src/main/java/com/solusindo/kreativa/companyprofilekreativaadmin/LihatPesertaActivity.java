@@ -97,6 +97,7 @@ public class LihatPesertaActivity extends AppCompatActivity {
                         model.setNAMA_PESERTA(jsonObject.getString("NAMA_PESERTA"));
                         model.setID_PESERTA(jsonObject.getString("ID_PESERTA"));
                         model.setSTATUS_JOIN(jsonObject.getString("STATUS_JOIN"));
+                        model.setBUKTI_PEMBAYARAN(jsonObject.getString("BUKTI_PEMBAYARAN"));
                         model.setID_EVENT(ID_EVENT);
 //                        model.setID_PESERTA(jsonObject.getString("ID_PESERTA"));
 //                        Toast.makeText(getApplicationContext(), jsonObject.getString("ID_PESERTA"), Toast.LENGTH_LONG).show();

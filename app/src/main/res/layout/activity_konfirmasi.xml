@@ -7,7 +7,7 @@
     tools:context=".KonfirmasiActivity">
 
     <EditText
-        android:id="@+id/confirm_editText3"
+        android:id="@+id/ET_confirm_kode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -42,7 +42,7 @@
         android:id="@+id/confirm_button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/confirm_editText3"
+        android:layout_below="@+id/ET_confirm_kode"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:backgroundTint="@color/button"
