@@ -65,14 +65,12 @@ public class LoginActivity extends AppCompatActivity {
 //            progressDialog.show();
             progressBar.setVisibility(View.VISIBLE);
             login.setVisibility(View.GONE);
-
 //        String type = "login";
 //        Bg_login bg = new Bg_login(this);
 //        bg.delegate = this;
 //        bg.execute(type,user,pass);}
 //        Intent intent = new Intent(this, HomeActivity.class);
 //        startActivity(intent);
-
         String upload_url = linkDatabase.linkurl()+"login.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, upload_url, new Response.Listener<String>() {
             @Override
@@ -114,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, LupaPasswordActivity.class);
         startActivity(intent);
     }
-
 //    @Override
 //    public void processfinish(String output) {
 //        progressBar.setVisibility(View.GONE);

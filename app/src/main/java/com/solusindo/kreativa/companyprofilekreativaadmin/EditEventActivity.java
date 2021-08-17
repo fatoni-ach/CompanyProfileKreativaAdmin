@@ -155,9 +155,6 @@ public class EditEventActivity extends AppCompatActivity {
                 dialogconfirm.dismiss();
             }
         });
-
-
-
     }
 
     public void onPilih(View view) {
